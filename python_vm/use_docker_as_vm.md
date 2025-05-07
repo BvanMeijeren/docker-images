@@ -1,16 +1,16 @@
 
-1. Create a Dockerfile
+# 1. Create a Dockerfile
 
-# Dockerfile
+## Dockerfile
 FROM python:3.11
 
-# Install required tools
+## Install required tools
 RUN pip install --upgrade pip \
  && pip install pandas dbt-core psycopg[binary] trino
 
 WORKDIR /workspace
 
-2. Create a docker-compose.yml (optional but useful)
+# 2. Create a docker-compose.yml (optional but useful)
 
 version: '3.8'
 services:
@@ -23,13 +23,14 @@ services:
 
     🔄 This mounts your current project directory (.) into the container at /workspace, so edits you make locally in Neovim will be visible inside Docker.
 
-3. Build and Start the Container
+# 3. Build and Start the Container
 
 docker compose up --build -d
-docker exec -it <container_name> bash
+docker exec -it python_setup bash
 
 (You can find the container name with docker ps)
-4. Edit Code Locally, Run It in Docker
+
+# 4. Edit Code Locally, Run It in Docker
 
 Now, open Neovim locally:
 
@@ -44,4 +45,4 @@ Then inside the container:
 
 python main.py
 
-🎯 You’re using Docker's environment, but writing code in your local setup.
+# 🎯 You’re using Docker's environment, but writing code in your local setup.
